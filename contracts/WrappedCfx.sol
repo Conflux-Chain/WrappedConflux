@@ -34,7 +34,7 @@ contract WrappedCfx is Context, IERC777, IERC20, Pausable {
     bytes32
         private constant TOKENS_RECIPIENT_INTERFACE_HASH = 0xb281fc8c12954d22544db45de3159a39272895b169a852b314f9cc762e44c53b;
 
-    event Deposit(address indexed dst, uint256 wad);
+    event Deposit(address indexed dst, address indexed rcp, uint256 wad);
     event Withdrawal(address indexed src, uint256 wad);
 
     // This isn't ever read from - it's only used to respond to the defaultOperators query.
@@ -363,18 +363,18 @@ contract WrappedCfx is Context, IERC777, IERC20, Pausable {
 
     function deposit() public payable {
         _mint(msg.sender, msg.sender, msg.value, "", "");
-        emit Deposit(msg.sender, msg.value);
+        emit Deposit(msg.sender, msg.sender, msg.value);
     }
 
     function() external payable {
         deposit();
     }
 
-    // Deposit WCFX to `holder` address and pass `recipient` as UserData; this is 
-    // primarily used for Atomic Deposit from CFX to DEX-CFX (CRCL)
+    // Deposit WCFX to `holder` address and pass `recipient` as UserData; this is primarily
+    // used for depositing CFX to DEX-CFX (CRCL) in one transaction for DeFi contracts
     function depositFor(address holder, bytes memory recipient) public payable {
         _mint(msg.sender, holder, msg.value, recipient, "");
-        emit Deposit(holder, msg.value);
+        emit Deposit(holder, recipient, msg.value);
     }
 
     /**
