@@ -370,6 +370,13 @@ contract WrappedCfx is Context, IERC777, IERC20, Pausable {
         deposit();
     }
 
+    // Deposit WCFX to `holder` address and pass `recipient` as UserData; this is 
+    // primarily used for Atomic Deposit from CFX to DEX-CFX (CRCL)
+    function depositFor(address holder, bytes memory recipient) public payable {
+        _mint(msg.sender, holder, msg.value, recipient, "");
+        emit Deposit(holder, msg.value);
+    }
+
     /**
      * @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
