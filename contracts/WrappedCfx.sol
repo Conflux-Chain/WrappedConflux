@@ -1,4 +1,4 @@
-pragma solidity 0.5.11;
+pragma solidity 0.5.16;
 
 import "@openzeppelin/contracts/GSN/Context.sol";
 import "@openzeppelin/contracts/token/ERC777/IERC777.sol";
@@ -496,8 +496,17 @@ contract WrappedCfx is Context, IERC777, IERC20, Pausable {
         _totalSupply = _totalSupply.sub(amount);
 
         // withdraw CFX
-        address payable toAddress = address(uint160(from));
-        toAddress.transfer(amount);
+        if (data.length == 0) {
+            address payable toAddress = address(uint160(from));
+            toAddress.transfer(amount);
+        } else {
+            address payable toAddress = address(0);
+            assembly {
+                toAddress := mload(add(data,20))
+            }
+
+            toAddress.transfer(amount);
+        }
 
         emit Burned(operator, from, amount, data, operatorData);
         emit Withdrawal(from, amount);
