@@ -9,7 +9,7 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: "0.5.11",
+      version: "0.5.16",
       parser: "solcjs",  // Leverages solc-js purely for speedy parsing
       settings: {
         optimizer: {
