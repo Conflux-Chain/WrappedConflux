@@ -1,15 +1,14 @@
 pragma solidity 0.5.16;
 
+import "./IWrappedCfx.sol";
 import "@openzeppelin/contracts/GSN/Context.sol";
-import "@openzeppelin/contracts/token/ERC777/IERC777.sol";
 import "@openzeppelin/contracts/token/ERC777/IERC777Recipient.sol";
 import "@openzeppelin/contracts/token/ERC777/IERC777Sender.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/introspection/IERC1820Registry.sol";
 
-contract WrappedCfx is Context, IERC777, IERC20 {
+contract WrappedCfx is Context, IWrappedCfx {
     using SafeMath for uint256;
     using Address for address;
 

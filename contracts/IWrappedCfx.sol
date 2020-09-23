@@ -5,6 +5,8 @@ interface IWrappedCfx {
 
     function symbol() external view returns (string memory);
 
+    function decimals() external pure returns (uint8);
+
     function granularity() external view returns (uint256);
 
     function totalSupply() external view returns (uint256);
@@ -12,6 +14,8 @@ interface IWrappedCfx {
     function balanceOf(address owner) external view returns (uint256);
 
     function allowance(address holder, address spender) external view returns (uint256);
+
+    function approve(address spender, uint256 value) external returns (bool);
 
     function send(address recipient, uint256 amount, bytes calldata data) external;
 
@@ -34,6 +38,8 @@ interface IWrappedCfx {
     function revokeOperator(address operator) external;
 
     function defaultOperators() external view returns (address[] memory);
+    
+    function() external payable;
 
     function operatorSend(
         address sender,
@@ -70,4 +76,8 @@ interface IWrappedCfx {
     event Deposit(address indexed dst, bytes indexed dat, uint256 wad);
 
     event Withdrawl(address indexed src, uint256 wad);
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
