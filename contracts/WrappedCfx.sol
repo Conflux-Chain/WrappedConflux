@@ -15,8 +15,8 @@ contract WrappedCfx is Context, IERC777, IERC20, IWrappedCfx {
     using Address for address;
 
     IERC1820Registry private constant ERC1820_REGISTRY = IERC1820Registry(
-        address(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24)
-        //address(0x866aCA87FF33a0ae05D2164B3D999A804F583222)
+        //address(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24)
+        address(0x866aCA87FF33a0ae05D2164B3D999A804F583222)
     );
 
     mapping(address => uint256) private _balances;
