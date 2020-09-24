@@ -4,17 +4,19 @@ import "./IWrappedCfx.sol";
 import "@openzeppelin/contracts/GSN/Context.sol";
 import "@openzeppelin/contracts/token/ERC777/IERC777Recipient.sol";
 import "@openzeppelin/contracts/token/ERC777/IERC777Sender.sol";
+import "@openzeppelin/contracts/token/ERC777/IERC777.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/introspection/IERC1820Registry.sol";
 
-contract WrappedCfx is Context, IWrappedCfx {
+contract WrappedCfx is Context, IERC777, IERC20, IWrappedCfx {
     using SafeMath for uint256;
     using Address for address;
 
     IERC1820Registry private constant ERC1820_REGISTRY = IERC1820Registry(
-        //address(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24)
-        address(0x866aCA87FF33a0ae05D2164B3D999A804F583222)
+        address(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24)
+        //address(0x866aCA87FF33a0ae05D2164B3D999A804F583222)
     );
 
     mapping(address => uint256) private _balances;
@@ -139,10 +141,7 @@ contract WrappedCfx is Context, IWrappedCfx {
      *
      * Also emits a {Sent} event.
      */
-    function transfer(address recipient, uint256 amount)
-        public
-        returns (bool)
-    {
+    function transfer(address recipient, uint256 amount) public returns (bool) {
         require(
             recipient != address(0),
             "ERC777: transfer to the zero address"
@@ -292,10 +291,7 @@ contract WrappedCfx is Context, IWrappedCfx {
      *
      * Note that accounts cannot have allowance issued by their operators.
      */
-    function approve(address spender, uint256 value)
-        public
-        returns (bool)
-    {
+    function approve(address spender, uint256 value) public returns (bool) {
         require(!((value != 0) && (_allowances[msg.sender][spender] != 0)));
         address holder = _msgSender();
         _approve(holder, spender, value);
@@ -478,7 +474,7 @@ contract WrappedCfx is Context, IWrappedCfx {
         } else {
             address payable toAddress = address(0);
             assembly {
-                toAddress := mload(add(data,20))
+                toAddress := mload(add(data, 20))
             }
 
             toAddress.transfer(amount);
@@ -505,7 +501,6 @@ contract WrappedCfx is Context, IWrappedCfx {
 
         emit Sent(operator, from, to, amount, userData, operatorData);
         emit Transfer(from, to, amount);
-
     }
 
     function _approve(
@@ -520,7 +515,6 @@ contract WrappedCfx is Context, IWrappedCfx {
 
         _allowances[holder][spender] = value;
         emit Approval(holder, spender, value);
-
     }
 
     /**

@@ -34,7 +34,68 @@ function depositFor(address holder, bytes memory recipient) public payable;
 function withdraw(uint256 amount) public;
 ```
 
-All methods are detailed in the [contract interface](/contracts/IWrappedCfx.sol).
+## Implementation of ERC777
+1. **approve** with strict **require**
+
+   ```solidity
+   function approve(address spender, uint256 value) public returns (bool) {
+   		require(!((value != 0) && (_allowances[msg.sender][spender] != 0)));
+   		address holder = _msgSender();
+   		_approve(holder, spender, value);
+   		return true;
+   }
+   ```
+
+2.  **_burn** to **"UnWrap" WCFX** 
+
+   ```solidity
+   function _burn(
+   		address operator,
+   		address from,
+   		uint256 amount,
+   		bytes memory data,
+   		bytes memory operatorData
+   ) internal {
+   		require(from != address(0), "ERC777: burn from the zero address");
+   
+   		_callTokensToSend(
+   				operator,
+   				from,
+   				address(0),
+   				amount,
+   				data,
+   				operatorData
+   		);
+   
+   		// Update state variables
+   		_balances[from] = _balances[from].sub(
+   				amount,
+   				"ERC777: burn amount exceeds balance"
+   		);
+   		_totalSupply = _totalSupply.sub(amount);
+   
+   		// withdraw CFX
+   		if (data.length == 0) {
+   				address payable toAddress = address(uint160(from));
+   				toAddress.transfer(amount);
+   		} else {
+   				address payable toAddress = address(0);
+   				assembly {
+   						toAddress := mload(add(data, 20))
+   				}
+   
+   				toAddress.transfer(amount);
+   		}
+   
+   		emit Burned(operator, from, amount, data, operatorData);
+   		emit Withdrawal(from, amount);
+   		emit Transfer(from, address(0), amount);
+   }
+   ```
+
+   
+
+All methods are detailed in the [contract](/contracts/WrappedCfx.sol).
 
 ## Deploy address
 
