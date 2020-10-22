@@ -119,7 +119,6 @@ function withdraw(uint256 amount) public;
 //withdraw CFX to address in parameter data
 function burn(uint256 amount, bytes memory data) public;
 ```
-
 ## Deploy address
 
 TBD
