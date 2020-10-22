@@ -42,7 +42,7 @@
           "type": "uint256"
         }
       ],
-      "name": "Withdrawl",
+      "name": "Withdrawal",
       "type": "event"
     },
     {
@@ -110,12 +110,12 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"dst\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bytes\",\"name\":\"dat\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"wad\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"src\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"wad\",\"type\":\"uint256\"}],\"name\":\"Withdrawl\",\"type\":\"event\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"recipient\",\"type\":\"bytes\"}],\"name\":\"depositFor\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol\":\"IWrappedCfx\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol\":{\"keccak256\":\"0x61128821ae1bc6269c25903dbed220daf071113f9ba99f644404413cbabd744d\",\"urls\":[\"bzz-raw://7aa48652bccbfae4ffd20661f844ec0f4bf11531fa639d8476ecc03f0f6b906c\",\"dweb:/ipfs/QmctKmfpnkW7kLKhcMW9NnfiuseM6sFZ69jk8bhsb5fsvh\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"dst\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bytes\",\"name\":\"dat\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"wad\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"src\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"wad\",\"type\":\"uint256\"}],\"name\":\"Withdrawal\",\"type\":\"event\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"recipient\",\"type\":\"bytes\"}],\"name\":\"depositFor\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol\":\"IWrappedCfx\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol\":{\"keccak256\":\"0xddff6379c3a11e6c4b7ab77df9df3d8b53de71a49dd3047d97e86d2380b5ad71\",\"urls\":[\"bzz-raw://4cb12902f184b266bf6fcedeff6c3d7e5d552edff24da55b2958413b8c8366ab\",\"dweb:/ipfs/QmcSfkWvSC7g94V3BTwmAuoiYdfonWGJrJAPGCLvrgc9DD\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.5.16;\n\ninterface IWrappedCfx {\n    function decimals() external pure returns (uint8);\n\n    function deposit() external payable;\n\n    function depositFor(address holder, bytes calldata recipient)\n        external\n        payable;\n\n    function withdraw(uint256 amount) external;\n\n    function() external payable;\n\n    event Deposit(address indexed dst, bytes indexed dat, uint256 wad);\n\n    event Withdrawl(address indexed src, uint256 wad);\n}\n",
+  "source": "pragma solidity 0.5.16;\n\ninterface IWrappedCfx {\n    function decimals() external pure returns (uint8);\n\n    function deposit() external payable;\n\n    function depositFor(address holder, bytes calldata recipient)\n        external\n        payable;\n\n    function withdraw(uint256 amount) external;\n\n    function() external payable;\n\n    event Deposit(address indexed dst, bytes indexed dat, uint256 wad);\n\n    event Withdrawal(address indexed src, uint256 wad);\n}\n",
   "sourcePath": "/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol",
   "ast": {
     "absolutePath": "/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol",
@@ -494,7 +494,7 @@
             "anonymous": false,
             "documentation": null,
             "id": 38,
-            "name": "Withdrawl",
+            "name": "Withdrawal",
             "nodeType": "EventDefinition",
             "parameters": {
               "id": 37,
@@ -507,7 +507,7 @@
                   "name": "src",
                   "nodeType": "VariableDeclaration",
                   "scope": 38,
-                  "src": "424:19:0",
+                  "src": "425:19:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -518,7 +518,7 @@
                     "id": 33,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "424:7:0",
+                    "src": "425:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -535,7 +535,7 @@
                   "name": "wad",
                   "nodeType": "VariableDeclaration",
                   "scope": 38,
-                  "src": "445:11:0",
+                  "src": "446:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -546,7 +546,7 @@
                     "id": 35,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "445:7:0",
+                    "src": "446:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -556,16 +556,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "423:34:0"
+              "src": "424:34:0"
             },
-            "src": "408:50:0"
+            "src": "408:51:0"
           }
         ],
         "scope": 40,
-        "src": "25:435:0"
+        "src": "25:436:0"
       }
     ],
-    "src": "0:461:0"
+    "src": "0:462:0"
   },
   "legacyAST": {
     "absolutePath": "/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol",
@@ -944,7 +944,7 @@
             "anonymous": false,
             "documentation": null,
             "id": 38,
-            "name": "Withdrawl",
+            "name": "Withdrawal",
             "nodeType": "EventDefinition",
             "parameters": {
               "id": 37,
@@ -957,7 +957,7 @@
                   "name": "src",
                   "nodeType": "VariableDeclaration",
                   "scope": 38,
-                  "src": "424:19:0",
+                  "src": "425:19:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -968,7 +968,7 @@
                     "id": 33,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "424:7:0",
+                    "src": "425:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -985,7 +985,7 @@
                   "name": "wad",
                   "nodeType": "VariableDeclaration",
                   "scope": 38,
-                  "src": "445:11:0",
+                  "src": "446:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -996,7 +996,7 @@
                     "id": 35,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "445:7:0",
+                    "src": "446:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1006,16 +1006,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "423:34:0"
+              "src": "424:34:0"
             },
-            "src": "408:50:0"
+            "src": "408:51:0"
           }
         ],
         "scope": 40,
-        "src": "25:435:0"
+        "src": "25:436:0"
       }
     ],
-    "src": "0:461:0"
+    "src": "0:462:0"
   },
   "compiler": {
     "name": "solc",
@@ -1023,7 +1023,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.2",
-  "updatedAt": "2020-09-24T08:42:49.118Z",
+  "updatedAt": "2020-10-22T08:43:37.007Z",
   "devdoc": {
     "methods": {}
   },

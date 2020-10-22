@@ -15,5 +15,5 @@ interface IWrappedCfx {
 
     event Deposit(address indexed dst, bytes indexed dat, uint256 wad);
 
-    event Withdrawl(address indexed src, uint256 wad);
+    event Withdrawal(address indexed src, uint256 wad);
 }
