@@ -97,6 +97,29 @@ function withdraw(uint256 amount) public;
 
 All methods are detailed in the [contract](/contracts/WrappedCfx.sol).
 
+## How to interact with WCFX
+
+Ways to **"Wrap" CFX** and **"Unwarp" WCFX** 
+
+```solidity
+/*** Wrap CFX ***/
+//deposit function to Wrap CFX
+function deposit() public payable;
+
+//fallback function to accept and wrap CFX 
+function () public payable;
+
+//Wrap CFX and deposit directly to contract
+function depositFor(address holder, bytes memory recipient) public payable;
+
+/*** UnWrap WCFX ***/
+//withdraw CFX directly to msg.sender
+function withdraw(uint256 amount) public;
+
+//withdraw CFX to address in parameter data
+function burn(uint256 amount, bytes memory data) public;
+```
+
 ## Deploy address
 
 TBD
