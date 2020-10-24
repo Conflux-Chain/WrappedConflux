@@ -110,15 +110,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"dst\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bytes\",\"name\":\"dat\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"wad\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"src\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"wad\",\"type\":\"uint256\"}],\"name\":\"Withdrawal\",\"type\":\"event\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"recipient\",\"type\":\"bytes\"}],\"name\":\"depositFor\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol\":\"IWrappedCfx\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol\":{\"keccak256\":\"0xddff6379c3a11e6c4b7ab77df9df3d8b53de71a49dd3047d97e86d2380b5ad71\",\"urls\":[\"bzz-raw://4cb12902f184b266bf6fcedeff6c3d7e5d552edff24da55b2958413b8c8366ab\",\"dweb:/ipfs/QmcSfkWvSC7g94V3BTwmAuoiYdfonWGJrJAPGCLvrgc9DD\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"dst\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bytes\",\"name\":\"dat\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"wad\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"src\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"wad\",\"type\":\"uint256\"}],\"name\":\"Withdrawal\",\"type\":\"event\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"recipient\",\"type\":\"bytes\"}],\"name\":\"depositFor\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/wangfan/Project/WrappedConflux/contracts/IWrappedCfx.sol\":\"IWrappedCfx\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/wangfan/Project/WrappedConflux/contracts/IWrappedCfx.sol\":{\"keccak256\":\"0xddff6379c3a11e6c4b7ab77df9df3d8b53de71a49dd3047d97e86d2380b5ad71\",\"urls\":[\"bzz-raw://4cb12902f184b266bf6fcedeff6c3d7e5d552edff24da55b2958413b8c8366ab\",\"dweb:/ipfs/QmcSfkWvSC7g94V3BTwmAuoiYdfonWGJrJAPGCLvrgc9DD\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity 0.5.16;\n\ninterface IWrappedCfx {\n    function decimals() external pure returns (uint8);\n\n    function deposit() external payable;\n\n    function depositFor(address holder, bytes calldata recipient)\n        external\n        payable;\n\n    function withdraw(uint256 amount) external;\n\n    function() external payable;\n\n    event Deposit(address indexed dst, bytes indexed dat, uint256 wad);\n\n    event Withdrawal(address indexed src, uint256 wad);\n}\n",
-  "sourcePath": "/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol",
+  "sourcePath": "/Users/wangfan/Project/WrappedConflux/contracts/IWrappedCfx.sol",
   "ast": {
-    "absolutePath": "/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol",
+    "absolutePath": "/Users/wangfan/Project/WrappedConflux/contracts/IWrappedCfx.sol",
     "exportedSymbols": {
       "IWrappedCfx": [
         39
@@ -568,7 +568,7 @@
     "src": "0:462:0"
   },
   "legacyAST": {
-    "absolutePath": "/Users/xiongyu/WrappedConflux/contracts/IWrappedCfx.sol",
+    "absolutePath": "/Users/wangfan/Project/WrappedConflux/contracts/IWrappedCfx.sol",
     "exportedSymbols": {
       "IWrappedCfx": [
         39
@@ -1022,8 +1022,8 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.2.2",
-  "updatedAt": "2020-10-22T08:43:37.007Z",
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-10-24T08:13:44.754Z",
   "devdoc": {
     "methods": {}
   },
