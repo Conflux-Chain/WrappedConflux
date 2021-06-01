@@ -1,6 +1,7 @@
 pragma solidity 0.5.16;
 
 import "./IWrappedCfx.sol";
+import "./InternalContracts/InternalContractsHandler.sol";
 import "@openzeppelin/contracts/GSN/Context.sol";
 import "@openzeppelin/contracts/token/ERC777/IERC777Recipient.sol";
 import "@openzeppelin/contracts/token/ERC777/IERC777Sender.sol";
@@ -10,14 +11,11 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/introspection/IERC1820Registry.sol";
 
-contract WrappedCfx is Context, IERC777, IERC20, IWrappedCfx {
+contract WrappedCfx is Context, IERC777, IERC20, IWrappedCfx, InternalContractsHandler {
     using SafeMath for uint256;
     using Address for address;
 
-    IERC1820Registry private constant ERC1820_REGISTRY = IERC1820Registry(
-        //address(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24)
-        address(0x88887eD889e776bCBe2f0f9932EcFaBcDfCd1820)
-    );
+    IERC1820Registry private ERC1820_REGISTRY;
 
     mapping(address => uint256) private _balances;
 
@@ -59,6 +57,8 @@ contract WrappedCfx is Context, IERC777, IERC20, IWrappedCfx {
         for (uint256 i = 0; i < _defaultOperatorsArray.length; i++) {
             _defaultOperators[_defaultOperatorsArray[i]] = true;
         }
+
+        ERC1820_REGISTRY = registry;
 
         // register interfaces
         ERC1820_REGISTRY.setInterfaceImplementer(
