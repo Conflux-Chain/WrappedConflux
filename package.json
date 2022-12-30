@@ -16,13 +16,13 @@
     "bignumber.js": "^9.0.0",
     "fs": "0.0.1-security",
     "js-conflux-sdk": "^0.13.3",
-    "truffle": "5.1.35",
+    "truffle": "5.7.1",
     "web3": "^1.2.6"
   },
   "devDependencies": {
     "@openzeppelin/test-helpers": "^0.5.5",
     "eslint": "^6.8.0",
-    "mocha": "^7.1.1",
+    "mocha": "^10.2.0",
     "nyc": "^15.0.1",
     "prettier": "^2.0.5",
     "prettier-plugin-solidity": "^1.0.0-alpha.54",
